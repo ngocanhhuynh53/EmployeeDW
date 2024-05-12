@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="192.168.178.73.ExternalSources.sa"
   DTS:DTSID="{C1C554C1-D838-40E3-903F-6DA6AB314223}"
@@ -10,7 +10,7 @@
       DTS:ConnectionString="Data Source=192.168.178.73;User ID=sa;Initial Catalog=ExternalSources;Provider=MSOLEDBSQL.1;Auto Translate=False;Application Name=SSIS-EmployeesETL-{C1C554C1-D838-40E3-903F-6DA6AB314223}192.168.178.73.ExternalSources.sa;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABg54DU4uS0+cJSbmx2TjowAAAAACAAAAAAAQZgAAAAEAACAAAAChW6mcSzsEMBGXAJcJH3qar5o8qv+B1uzlxHdvEhafSAAAAAAOgAAAAAIAACAAAAD1hsNvqkwoWH7oJLCtpBOTs8ODU1H/tsuROAQWpEdJWYAAAADKAPOp5xrNlumsuupFDFj0qFkhoU45SGsQOYpezw/3oHJCPTBcDcARql2Fk9fS2+CdTlo6FqLP5WnkFaCffeBKw8dWOIE2aUwQgFRe51IX4SaX8ZET6G2e7efLTpKh4XcODQZr+49UmWIeGNr134fNiTWL2UnUC3NmKxC0knifwEAAAAD2ljZxd2oFPRSHt4caT5SLyQAYXvIo5W2PBhslXvI7N6sSnd3WiqrDORM5MG5qH8X7mqJiy/MRviT9xVzB5+ln</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABg54DU4uS0+cJSbmx2TjowAAAAACAAAAAAAQZgAAAAEAACAAAAAXIgrDpdW8Jq4binwX9l/eY9qZwyv0g8AMJPzjqfZKHQAAAAAOgAAAAAIAACAAAAAK2G0QkoZwi2p9IIlyGYkJdd+nGexN4YVs6PK58l5y64AAAAAUyWsJQMnaICfIByGPbQsq2qoiQNhV6vZzkTVQasjlNmXhuRN7eRvoIJ+CKKfYTy+6EFXtmWnLFEGNdTOE9yDj40qnrv8r+rhWg9TtSqIwG9bteB/E1wjs8VsfWtBZkPxhYXI5LWcwFjQySPcOBQDFCsk4p/lFGqOlZrdYEanO2UAAAADpWiH9aB9jy7/6BqJXtJhxSCPgp/1hjM0jwSdnAGqK1z1jdlT5LL7bjUODytzqxi4x2ijpNiR3kuuMIbn2Zaam</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

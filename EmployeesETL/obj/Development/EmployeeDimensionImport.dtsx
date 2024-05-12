@@ -1,0 +1,2188 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/12/2024 1:24:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-RGTJLGJ"
+  DTS:CreatorName="DESKTOP-RGTJLGJ\THANH TUYEN"
+  DTS:DTSID="{EA3A3755-AAF3-4741-BCD6-887687BD1AE8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="EmployeeDimensionImport"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{386C7A74-8030-468F-806E-CD8C64AD80E7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[192.168.178.73.EmployeeDW.sa 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5304A3D4-33E4-42AB-B907-CC641F276986}"
+      DTS:ObjectName="192.168.178.73.EmployeeDW.sa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=192.168.178.73;User ID=sa;Initial Catalog=EmployeeDW;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-EmployeeDimensionImport-{5304A3D4-33E4-42AB-B907-CC641F276986}192.168.178.73.EmployeeDW.sa 1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABg54DU4uS0+cJSbmx2TjowAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA/5hkJEsTWQohgnnTSshmhseiYtdbRj4ol2jjyXZvOTgAAAAAOgAAAAAIAACAAAAAeCk2Hon/jlAibiJWCE+3V6oJ5fMUtEAp5NMGNdne4ayAAAABMavy8X1qvqWi2qics2Z8u1Y5N2O+IzwK++YJHBXf1eEAAAADy/UIBCVAc4ArsvWSVZOeqDHX5XCnhguzpQAFsHpqdiacLtHMiBXUoaroHS+jxioIszMI86aW5IbAb04+ouEh8</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Extract From Source to Stage stgEmp"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5F97AAED-775B-4EFE-9282-96A51CC6461B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Extract From Source to Stage stgEmp"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST – Stage stgEmployee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="{ABE11E6D-1AD8-42C8-82ED-504513ED521B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.EmployeesStage.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[emp_no]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[emp_no]" />
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[birth_date]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[birth_date]" />
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].Columns[hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[hire_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[emp_no]"
+                      dataType="i4"
+                      name="emp_no" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[birth_date]"
+                      dataType="dbDate"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="dbDate"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - ExternalSourcesv_emp_dimension"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Connections[OleDbConnection]"
+                  connectionManagerID="{D694ACFA-CA53-4B95-AABA-2F3B4E44277B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.Employees.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[emp_no]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[emp_no]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[emp_no]"
+                      name="emp_no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      name="birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      length="14"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      length="16"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="1"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      name="hire_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[emp_no]"
+                      dataType="i4"
+                      name="emp_no" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      dataType="dbDate"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      dataType="dbDate"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[emp_no]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[emp_no]"
+                      name="emp_no" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      name="birth_date" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Extract From Source to Stage stgEmp.Paths[OLE DB Source Output]"
+              endId="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Load from stgEmployee to DimEmployee"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C77C368F-D8C2-4916-AD6F-7FF3FA5D4A96}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Load from stgEmployee to DimEmployee"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[RowIsCurrent]"
+                      dataType="wstr"
+                      description="RowIsCurrent"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,1)("False")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,1)("False")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Output].Columns[RowIsCurrent]"
+                      dataType="wstr"
+                      description="RowIsCurrent"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Output].Columns[RowIsCurrent]"
+                      name="RowIsCurrent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,1)("True")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,1)("True")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="DST - Slowly Changing Dimension DimEmp"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [BirthDate], [EmployeeNo], [FirstName], [Gender], [HireDate], [LastName],[RowIsCurrent] FROM [dbo].[DimEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[RowIsCurrent] = 'True'</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Connections[LookupConnection]"
+                  connectionManagerID="{9A464B3F-7E14-4B5A-92DB-43E3FF98C759}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.EmployeeDW.sa]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[EmployeeNo]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[HireDate]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[LastName]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[EmployeeNo]"
+                      dataType="i4"
+                      name="EmployeeNo" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input].ExternalColumns[RowIsCurrent]"
+                      dataType="wstr"
+                      length="1"
+                      name="RowIsCurrent" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimEmployees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{9A464B3F-7E14-4B5A-92DB-43E3FF98C759}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.EmployeeDW.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNo]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[emp_no]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[birth_date]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="hire_date"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].Columns[RowIsCurrent]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="RowIsCurrent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowIsCurrent]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Output].Columns[RowIsCurrent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNo]"
+                      dataType="i4"
+                      name="EmployeeNo" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowIsCurrent]"
+                      dataType="wstr"
+                      length="1"
+                      name="RowIsCurrent" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowStartDate]"
+                      dataType="dbTimeStamp"
+                      name="RowStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowEndDate]"
+                      dataType="dbTimeStamp"
+                      name="RowEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RowChangeReason]"
+                      dataType="wstr"
+                      length="200"
+                      name="RowChangeReason" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimEmployees] SET [RowIsCurrent] = ? WHERE [EmployeeNo] = ? AND [RowIsCurrent] = 'True'</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{9A464B3F-7E14-4B5A-92DB-43E3FF98C759}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.EmployeeDW.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]" />
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].Columns[RowIsCurrent]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="RowIsCurrent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Output].Columns[RowIsCurrent]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="1"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Stage stgEmployee"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="{ABE11E6D-1AD8-42C8-82ED-504513ED521B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.178.73.EmployeesStage.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[emp_no]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]"
+                      name="emp_no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      name="birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      length="14"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      length="16"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="1"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      name="hire_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[emp_no]"
+                      dataType="i4"
+                      name="emp_no" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      dataType="dbDate"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      dataType="dbDate"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[emp_no]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[emp_no]"
+                      name="emp_no" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      name="birth_date" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load from stgEmployee to DimEmployee\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[emp_no]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[birth_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="first_name"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[first_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="last_name"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[last_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1].Columns[hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="hire_date"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[emp_no]"
+                      cachedDataType="i4"
+                      cachedName="emp_no"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[emp_no]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[birth_date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="first_name"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[first_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="last_name"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[last_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2].Columns[hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="hire_date"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[emp_no]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[emp_no]"
+                      name="emp_no" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[birth_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[birth_date]"
+                      name="birth_date" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1].Columns[hire_date]"
+                      name="hire_date" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[Derived Column Output]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[Derived Column Output1]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[Historical Attribute Inserts Output]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[New Output]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Outputs[New Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[OLE DB Command Output]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[OLE DB Source Output]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp.Inputs[Slowly Changing Dimension Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DF - Load from stgEmployee to DimEmployee.Paths[Union All Output 1]"
+              endId="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\DF - Load from stgEmployee to DimEmployee\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate stgEmployee Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{88FF19A5-D9EC-447C-867A-015A64F003D6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate stgEmployee Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ABE11E6D-1AD8-42C8-82ED-504513ED521B}"
+          SQLTask:SqlStatementSource="truncate table stgEmployee;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E5C53721-58BC-4D12-83CE-59BE950205A7}"
+      DTS:From="Package\SQL - Truncate stgEmployee Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Extract From Source to Stage stgEmp" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7BA7B08B-75AC-48E9-9B97-2504CA14F784}"
+      DTS:From="Package\DF - Extract From Source to Stage stgEmp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DF - Load from stgEmployee to DimEmployee" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="276,41.6"
+          Id="Package\DF - Extract From Source to Stage stgEmp"
+          TopLeft="390.833311979143,178.533332091835" />
+        <NodeLayout
+          Size="289.6,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee"
+          TopLeft="390.833311979142,272.999998101592" />
+        <NodeLayout
+          Size="240.8,41.6"
+          Id="Package\SQL - Truncate stgEmployee Table"
+          TopLeft="401.666644720568,88.3999993852774" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="525.449978349855,129.999999385277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.5333327065574"
+              Start="0,0"
+              End="0,41.0333327065574">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.0333327065574" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="532.233311979143,220.133332091835">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.8666660097573"
+              Start="0,0"
+              End="0,45.3666660097573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.3666660097573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Extract From Source to Stage stgEmp">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="270.4,41.6"
+          Id="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension"
+          TopLeft="278.333318125871,96.1999993310372" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee"
+          TopLeft="444.166642398471,217.533331820634" />
+        <EdgeLayout
+          Id="Package\DF - Extract From Source to Stage stgEmp.Paths[OLE DB Source Output]"
+          TopLeft="413.533318125871,137.799999331037">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129.4333242726,79.7333324895965"
+              Start="0,0"
+              End="129.4333242726,72.2333324895965">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8666662447982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.8666662447982"
+                    Point2="0,39.8666662447982"
+                    Point3="4,39.8666662447982" />
+                  <mssgle:LineSegment
+                    End="125.4333242726,39.8666662447982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="125.4333242726,39.8666662447982"
+                    Point2="129.4333242726,39.8666662447982"
+                    Point3="129.4333242726,43.8666662447982" />
+                  <mssgle:LineSegment
+                    End="129.4333242726,72.2333324895965" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Extract From Source to Stage stgEmp\SRC - ExternalSourcesv_emp_dimension">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DF - Load from stgEmployee to DimEmployee">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee"
+          TopLeft="134.5,5.49999999999995" />
+        <NodeLayout
+          Size="280.8,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp"
+          TopLeft="93.7,107.1" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[OLE DB Source Output]"
+          TopLeft="234.1,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\Derived Column"
+          TopLeft="20.7,208.7" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[Historical Attribute Inserts Output]"
+          TopLeft="188.633333333333,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91.5333333333333,59.9999999999999"
+              Start="0,0"
+              End="-91.5333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2039660056657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2039660056657"
+                    Point2="0,24.2039660056657"
+                    Point3="-4,24.2039660056657" />
+                  <mssgle:LineSegment
+                    End="-87.5333333333333,24.2039660056657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-87.5333333333333,24.2039660056657"
+                    Point2="-91.5333333333333,24.2039660056657"
+                    Point3="-91.5333333333333,28.2039660056657" />
+                  <mssgle:LineSegment
+                    End="-91.5333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-120.823053385417,29.2039660056657,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\OLE DB Command"
+          TopLeft="5.50000000000003,310.3" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[Derived Column Output]"
+          TopLeft="97.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,59.9999999999999"
+              Start="0,0"
+              End="-8,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-4,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,30"
+                    Point2="-8,30"
+                    Point3="-8,34" />
+                  <mssgle:LineSegment
+                    End="-8,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\Union All"
+          TopLeft="174.1,411.9" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[New Output]"
+          TopLeft="279.566666666667,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.8,263.2"
+              Start="0,0"
+              End="-26.8,255.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,126.373173786002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,126.373173786002"
+                    Point2="0,130.373173786002"
+                    Point3="-4,130.373173786002" />
+                  <mssgle:LineSegment
+                    End="-22.8,130.373173786002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.8,130.373173786002"
+                    Point2="-26.8,130.373173786002"
+                    Point3="-26.8,134.373173786002" />
+                  <mssgle:LineSegment
+                    End="-26.8,255.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-40.49138671875,135.373173786002,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[OLE DB Command Output]"
+          TopLeft="89.1,351.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.333333333333,59.9999999999999"
+              Start="0,0"
+              End="126.333333333333,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="122.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.333333333333,35.5263157894736"
+                    Point2="126.333333333333,35.5263157894736"
+                    Point3="126.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="126.333333333333,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\Derived Column 1"
+          TopLeft="153.3,513.5" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[Union All Output 1]"
+          TopLeft="234.1,453.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\DF - Load from stgEmployee to DimEmployee\Insert Destination"
+          TopLeft="154.5,615.099999999999" />
+        <EdgeLayout
+          Id="Package\DF - Load from stgEmployee to DimEmployee.Paths[Derived Column Output1]"
+          TopLeft="234.1,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Extract From Source to Stage stgEmp\DST – Stage stgEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load from stgEmployee to DimEmployee\SRC - Stage stgEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load from stgEmployee to DimEmployee\DST - Slowly Changing Dimension DimEmp">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{9A464B3F-7E14-4B5A-92DB-43E3FF98C759}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimEmployees]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[birth_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BirthDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[emp_no]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EmployeeNo&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[first_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;FirstName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[gender]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Gender&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[hire_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;HireDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SRC - Stage stgEmployee.Outputs[OLE DB Source Output].Columns[last_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;LastName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn&gt;RowIsCurrent&lt;/CurrentIndicatorColumn&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent&gt;True&lt;/ValueCurrent&gt;
+  &lt;ValueExpired&gt;False&lt;/ValueExpired&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
