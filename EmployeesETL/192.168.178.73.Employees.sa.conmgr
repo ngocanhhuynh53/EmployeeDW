@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.178.73.Employees.sa"
+  DTS:DTSID="{D694ACFA-CA53-4B95-AABA-2F3B4E44277B}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=192.168.178.73;User ID=sa;Initial Catalog=Employees;Provider=MSOLEDBSQL.1;Application Name=SSIS-EmployeesETL-{D694ACFA-CA53-4B95-AABA-2F3B4E44277B}192.168.178.73.Employees.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzD3G3X1cpUuYi2lYXrTgNgAAAAACAAAAAAAQZgAAAAEAACAAAACt+sepwRsMs2j1OwKCZF+/TXBAaCx2YxWx3a14iRuv7QAAAAAOgAAAAAIAACAAAABZceRSb9mJgVuEILvR71BIYQeOuLcD7cMoqVHwjNIn/4AAAACVvkoPIy0aPySy6JPLW5WvuU9f7TwQ/tU0t3MhK3fRGF8inDQO2OSv5TFxAcG8mib1g7fvLxNFdvB3Bc5SKxTe91V75xWePRTKcqfOXwhOOqDKfIxO1wtBhYM6hNj/ypnFl++DSo+AkdrNiSuC3CuY5zRXtmj5QxzB57b/8immDUAAAACzEpxj8t0SvorjTl1d+I64Ueup1CCEvaz8VHtUg86G4klG9wk7a1hqLc+Vho2iX+3OHm7AyIeli0cCLccd1iYq</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
